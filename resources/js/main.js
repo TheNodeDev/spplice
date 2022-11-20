@@ -149,7 +149,7 @@ async function loadCards() {
     }
 
     document.getElementById("cardlist-insert").innerHTML += `
-      <div class="card" style="background-image: url('${image}')" onclick="showInfo(${i})">
+      <div id="${i}" class="card" style="background-image: url('${image}')" onclick="showInfo(event, ${i})">
         <p class="card-title">${title}</p>
       </div>
     `;
@@ -160,9 +160,21 @@ async function loadCards() {
   if (ARGS.queuedMod) launchModFromName(ARGS.queuedMod);
 
 }
-
-function showInfo(packageID) {
-
+function launch()
+{
+  let IDs = []
+  Array.from(document.querySelectorAll('.selected')).forEach(function(card) {
+    IDs.push(card.id);
+  });
+  Neutralino.os.showNotification('Hello world', `Launching ${IDs.toString()}`);
+}
+function showInfo(event, packageID) {
+  if(event.shiftKey)
+  {
+    if(event.target.classList.contains("card"))
+      event.target.classList.toggle("selected");
+    return;
+  }
   const div = document.getElementById("modinfo");
   const title = document.getElementById("modinfo-title");
   const description = document.getElementById("modinfo-description");

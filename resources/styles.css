@@ -107,8 +107,9 @@ i {
 #cardlist {
   position: relative;
   margin: 0 0 0 5vw;
-  padding: 8vh 6vw 6vw 6vw;
+  padding: 7vh 5vw 5vw 6vw;
   width: 78vw;
+
   /* HACK: Remove whitespaces between DIVs */
   font-size: 0;
 }
@@ -130,6 +131,28 @@ i {
 .card:hover {
   transform: scale(1.05);
 }
+.selected{
+  box-shadow: 0 0 0 2pt rgb(112, 221, 102);
+}
+.launch-button{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8%;
+  background-color: rgba(0, 0, 0, 0.438);
+}
+.launch-button > button{
+  position: relative;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.342);
+  background-color: #424242;
+  border-style: none;
+  border-radius: 10px;
+}
 .card-title {
   position: absolute;
   bottom: 0;
@@ -142,6 +165,8 @@ i {
   cursor: default;
   background-color: rgba(0, 0, 0, 0.7);
   transition: color 0.5s;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #pplaunch-status {
